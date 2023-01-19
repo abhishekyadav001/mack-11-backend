@@ -3,7 +3,7 @@ const app = express();
 const CORS = require("cors");
 
 require("dotenv").config();
-
+const port = process.env.PORT || 8080;
 app.use(CORS());
 app.use(express.json());
 
@@ -14,7 +14,7 @@ app.get("/", (req, res) => {
   }
 });
 
-app.listen(8080, async () => {
+app.listen(port, async () => {
   try {
     console.log("Connected to DB successfully");
   } catch (err) {
