@@ -16,7 +16,6 @@ app.get("/", (req, res) => {
 
 app.listen(8080, async () => {
   try {
-    await connection;
     console.log("Connected to DB successfully");
   } catch (err) {
     console.log("connection failed");
