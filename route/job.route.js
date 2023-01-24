@@ -31,9 +31,29 @@ jobRoute.post("/add", async (req, res) => {
 });
 jobRoute.get("/search?:q", async (req, res) => {
   const { q } = req.query;
-  console.log(q);
+
   try {
     const jobs = await jobModel.find({ companyName: q });
+    res.send(jobs);
+  } catch (error) {
+    res.send(error.message);
+  }
+});
+jobRoute.get("/location?:q", async (req, res) => {
+  const { q } = req.query;
+
+  try {
+    const jobs = await jobModel.find({ location: q });
+    res.send(jobs);
+  } catch (error) {
+    res.send(error.message);
+  }
+});
+jobRoute.get("/contract?:q", async (req, res) => {
+  const { q } = req.query;
+
+  try {
+    const jobs = await jobModel.find({ contract: q });
     res.send(jobs);
   } catch (error) {
     res.send(error.message);

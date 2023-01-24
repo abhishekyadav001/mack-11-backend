@@ -18,6 +18,7 @@ app.use("/auth", authRoute);
 // job route
 const jobRoute = require("./route/job.route");
 app.use("/job", jobRoute);
+
 app.listen(port, async () => {
   try {
     await connection();
