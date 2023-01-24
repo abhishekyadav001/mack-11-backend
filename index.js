@@ -13,12 +13,11 @@ app.use(
 app.use(express.json());
 // first call
 // Auth route
-
-// invest route
-
-app.use("/", (req, res) => {
-  res.send("Home Page");
-});
+const authRoute = require("./route/auth.route");
+app.use("/auth", authRoute);
+// job route
+const jobRoute = require("./route/job.route");
+app.use("/job", jobRoute);
 app.listen(port, async () => {
   try {
     await connection();
