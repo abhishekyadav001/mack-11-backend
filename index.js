@@ -18,7 +18,11 @@ app.use("/auth", authRoute);
 // job route
 const jobRoute = require("./route/job.route");
 app.use("/job", jobRoute);
-
+app.use("/", (req, res) => {
+  if (req.url == "/") {
+    res.send("Home Page");
+  }
+});
 app.listen(port, async () => {
   try {
     await connection();
