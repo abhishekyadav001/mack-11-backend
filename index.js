@@ -14,11 +14,8 @@ app.use(express.json());
 // first call
 // Auth route
 
-const authRoute = require("./routes/auth.routes");
-app.use("/auth", authRoute);
 // invest route
-const investRoute = require("./routes/invest.route");
-app.use("/calculator", investRoute);
+
 app.use("/", (req, res) => {
   res.send("Home Page");
 });
