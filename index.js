@@ -2,7 +2,7 @@ const port = process.env.PORT || 8080;
 const express = require("express");
 require("dotenv").config();
 const cors = require("cors");
-const { connection } = require("./config/db");
+
 const app = express();
 
 app.use(
@@ -11,17 +11,15 @@ app.use(
   })
 );
 app.use(express.json());
-// first call
-// Auth route
-const authRoute = require("./route/auth.route");
-app.use("/auth", authRoute);
-// job route
-const jobRoute = require("./route/job.route");
-app.use("/job", jobRoute);
+
+const userRoute = require("./route/users.route");
+const connection = require("./config/db");
+
+app.use("/rand", userRoute);
+const wordRoute = require("./route/word.route");
+app.use("/word", wordRoute);
 app.use("/", (req, res) => {
-  if (req.url == "/") {
-    res.send("Home Page");
-  }
+  res.send("Home page");
 });
 app.listen(port, async () => {
   try {
